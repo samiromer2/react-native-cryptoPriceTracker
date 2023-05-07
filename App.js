@@ -1,9 +1,10 @@
-import React, { useRef, useMemo ,useState } from "react";
+import React, { useRef, useMemo, useState, useEffect } from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Listitem from "./components/Listitem";
 import Chart from "./components/Chart";
 import { SAMPLE_DATA } from "./assets/data/sampleData";
 import { FlatList } from "react-native";
+import {getMarketData} from './services/cryptoService';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -17,7 +18,17 @@ const ListHeader = () => (
   </>
 );
 export default function App() {
-  const [selectedCoinData,setSelectedCoinData]= useState(null);
+  const [data,setData] = useState([]);
+  const [selectedCoinData, setSelectedCoinData] = useState(null);
+
+  useEffect(()=> {
+    const fetchMarketData = async () => {
+      const marketData = await getMarketData();
+      setData(marketData);
+    }
+    fetchMarketData();
+  },[])
+
   const bottomSheetModalRef = useRef(null);
   const snapPoints = useMemo(() => ["45%"], []);
   const openModal = (item) => {
@@ -29,7 +40,7 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <FlatList
           keyExtractor={(item) => item.id}
-          data={SAMPLE_DATA}
+          data={data}
           renderItem={({ item }) => (
             <Listitem
               name={item.name}
@@ -52,15 +63,17 @@ export default function App() {
         style={styles.bottomSheet}
       >
         {selectedCoinData ? (
-      <Chart
-      currentPrice={selectedCoinData.current_price}
-      logoUrl={selectedCoinData.image}
-      name={selectedCoinData.name}
-      symbol={selectedCoinData.symbol}
-      priceChangePercentage7d = {selectedCoinData.price_change_percentage_7d_in_currency}
-      sparkline={selectedCoinData.sparkline_in_7d.price}
-      />
-      ) : null}
+          <Chart
+            currentPrice={selectedCoinData.current_price}
+            logoUrl={selectedCoinData.image}
+            name={selectedCoinData.name}
+            symbol={selectedCoinData.symbol}
+            priceChangePercentage7d={
+              selectedCoinData.price_change_percentage_7d_in_currency
+            }
+            sparkline={selectedCoinData.sparkline_in_7d.price}
+          />
+        ) : null}
       </BottomSheetModal>
     </BottomSheetModalProvider>
   );
@@ -85,18 +98,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 16,
   },
-  bottomSheet:{
-    shadowColor: '#000000',
-    backgroundColor: 'white',  // <==== HERE
-    shadowOffset:{
-      width:0,
-      height:-4,
+  bottomSheet: {
+    shadowColor: "#000000",
+    backgroundColor: "white", // <==== HERE
+    shadowOffset: {
+      width: 0,
+      height: -4,
     },
     shadowOpacity: 0.58,
-            shadowRadius: 16.0,
+    shadowRadius: 16.0,
 
-            elevation: 24,
-  
+    elevation: 24,
   },
-
 });
