@@ -1,0 +1,7 @@
+- Sesonality
+- news 
+- support and resistance area
+- liquidity Areas
+- Heat map
+- Sell and Buy orders from exchanges orderbook
+- 
