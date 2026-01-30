@@ -1,4 +1,3 @@
-
 - Seasonality and Bitcoin Cycles
   
       - Halving events
@@ -6,9 +5,22 @@
 - News
     - Macroeconomic news (interest rates, inflation)
     - Government regulations
-    - Mr Trump
     - Mr Trump & Truth social
     - polymarket still ?
 - Support and Resistance Areas
     - Support: areas where price tends to stop falling (buyers step in)
+    - Resistance: areas where price tends to stop rising (sellers step in)
+- liquidity Areas
+    - Liquidity areas are zones where many stop-losses and pending orders sit.
+    - Equal highs / equal lows
+    - Previous day/week highs or lows
+    - Round numbers
+- Heat map
+    - A heat map visually shows:
+    - Where large orders are sitting
+    - Areas of high interest on the order book
+    - Potential future support/resistance
+- Sell and Buy orders from exchanges orderbook
+    - Buy orders (bids) → demand
+    - Sell orders (asks) → supply
 
