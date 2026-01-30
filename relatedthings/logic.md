@@ -1,5 +1,5 @@
 - Seasonality and Bitcoin Cycles
-      -  Halving events
+      - Halving events
       - Liquidity cycles
 - News
     - Macroeconomic news (interest rates, inflation)
