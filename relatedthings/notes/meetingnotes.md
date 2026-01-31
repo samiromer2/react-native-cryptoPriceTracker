@@ -1,0 +1,13 @@
+30/1/2026
+-something related with tokens .
+-indexs , protofiles , weights , where , who , risk level , indivuals vs high profiles 
+-many API's logic not just one 
+-data points (to think about)
+-reword and loss rate
+-backlog logic history to test and new data to build upon
+-display 
+-refer rate 
+-2 weeks 
+-risk model 
+-our aim is 70% susscess rate 
+-1 year data logic 
